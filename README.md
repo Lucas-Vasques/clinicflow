@@ -126,4 +126,4 @@ Lucas Vasques
 
 ## Repositório
 
-[Cole aqui o link do seu repositório GitHub público.](https://github.com/Lucas-Vasques/clinicflow/edit/main/README.md)
+[Repositório](https://github.com/Lucas-Vasques/clinicflow/edit/main/README.md)
