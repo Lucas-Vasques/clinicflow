@@ -57,3 +57,73 @@ clinicflow/
 ├── README.md
 ├── requirements.txt
 └── VERSION
+```
+## Instalação
+1. Clonar o repositório
+git clone <LINK_DO_SEU_REPOSITORIO>
+cd clinicflow
+2. Criar o ambiente virtual
+python -m venv .venv
+3. Ativar o ambiente virtual
+Windows PowerShell
+.venv\Scripts\Activate.ps1
+Windows CMD
+.venv\Scripts\activate
+4. Instalar as dependências
+pip install -r requirements.txt
+
+## Como executar o projeto
+python src/main.py
+
+## Como rodar os testes
+pytest
+
+## Como rodar o lint
+ruff check .
+
+## Exemplo de uso
+
+Ao executar o programa, o usuário verá um menu com as opções principais do sistema:
+
+=== ClinicFlow ===
+1. Cadastrar paciente
+2. Listar pacientes
+3. Buscar paciente
+4. Agendar consulta
+5. Listar agendamentos
+6. Atualizar status do agendamento
+7. Cancelar agendamento
+8. Sair
+   
+## Testes automatizados
+
+O projeto possui testes automatizados para validar comportamentos importantes, como:
+
+- cadastro de paciente com sucesso
+- bloqueio de idade negativa
+- criação de agendamento válido
+- erro ao agendar consulta para paciente inexistente
+- atualização de status de agendamento
+- cancelamento de agendamento
+
+## Integração contínua
+
+O projeto utiliza GitHub Actions para rodar automaticamente:
+
+- instalação das dependências
+- lint com Ruff
+- testes com Pytest
+
+## Versionamento
+
+Versão atual do projeto:
+
+1.0.0
+
+## Autor
+
+Lucas Vasques
+
+## Repositório
+
+[Cole aqui o link do seu repositório GitHub público.](https://github.com/Lucas-Vasques/clinicflow/edit/main/README.md)
