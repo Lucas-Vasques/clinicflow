@@ -1,4 +1,3 @@
-from src.appointment import cancel_appointment, create_appointment, list_appointments, update_appointment_status
 from storage import load_data, save_data
 from address_api import AddressAPIError, get_address_by_cep
 from patient import (
@@ -6,6 +5,12 @@ from patient import (
     list_patients,
     find_patient_by_id,
     find_patients_by_name,
+)
+from appointment import (
+    cancel_appointment,
+    create_appointment,
+    list_appointments,
+    update_appointment_status,
 )
 
 PATIENTS_FILE = "data/patients.json"
