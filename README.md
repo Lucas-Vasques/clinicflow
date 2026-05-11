@@ -89,4 +89,16 @@ clinicflow/
 ├── pyproject.toml
 ├── README.md
 ├── requirements.txt
-└── VERSION
+└── VERSION´´´
+
+## Instalação
+
+- 1. Clonar o repositório:
+git clone https://github.com/Lucas-Vasques/clinicflow.git
+cd clinicflow
+
+- 2. Criar o ambiente virtual:
+python -m venv .venv
+
+- 3. Ativar o ambiente virtual:
+Windows PowerShell: .venv\Scripts\Activate.ps1
