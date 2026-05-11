@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "id": 1,
+    "name": "Lucas",
+    "age": 20,
+    "phone": "85987144000",
+    "notes": "Maluco",
+    "cep": "70722-080",
+    "street": "",
+    "neighborhood": "",
+    "city": "",
+    "state": ""
+  },
+  {
+    "id": 2,
+    "name": "Mateus",
+    "age": 19,
+    "phone": "85987144000",
+    "notes": "Maluco",
+    "cep": "70722-080",
+    "street": "Quadra SQN 102 Bloco H",
+    "neighborhood": "Asa Norte",
+    "city": "Brasília",
+    "state": "DF"
+  }
+]
