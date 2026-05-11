@@ -1,15 +1,11 @@
+from src.appointment import cancel_appointment, create_appointment, list_appointments, update_appointment_status
 from storage import load_data, save_data
+from address_api import AddressAPIError, get_address_by_cep
 from patient import (
     create_patient,
     list_patients,
     find_patient_by_id,
     find_patients_by_name,
-)
-from appointment import (
-    create_appointment,
-    list_appointments,
-    update_appointment_status,
-    cancel_appointment,
 )
 
 PATIENTS_FILE = "data/patients.json"
@@ -28,19 +24,6 @@ def show_menu():
     print("8. Sair")
 
 
-def handle_create_patient(patients):
-    try:
-        name = input("Nome: ")
-        age = int(input("Idade: "))
-        phone = input("Telefone: ")
-        notes = input("Observações: ")
-
-        patient = create_patient(patients, name, age, phone, notes)
-        print(f"Paciente cadastrado com sucesso. ID: {patient['id']}")
-    except ValueError as error:
-        print(f"Erro: {error}")
-
-
 def handle_list_patients(patients):
     items = list_patients(patients)
 
@@ -51,36 +34,93 @@ def handle_list_patients(patients):
     for patient in items:
         print(
             f"ID: {patient['id']} | Nome: {patient['name']} | "
-            f"Idade: {patient['age']} | Telefone: {patient['phone']}"
+            f"Idade: {patient['age']} | Telefone: {patient['phone']} | "
+            f"Cidade: {patient.get('city', '')} | Estado: {patient.get('state', '')}"
         )
 
 
 def handle_search_patient(patients):
     try:
-        option = input("Buscar por (1) ID ou (2) Nome? ")
+        search_type = input("Buscar por ID ou nome? (id/nome): ").strip().lower()
 
-        if option == "1":
-            patient_id = int(input("Digite o ID: "))
+        if search_type == "id":
+            patient_id = int(input("ID do paciente: "))
             patient = find_patient_by_id(patients, patient_id)
 
-            if patient:
-                print(patient)
-            else:
+            if not patient:
                 print("Paciente não encontrado.")
+                return
 
-        elif option == "2":
-            name = input("Digite o nome: ")
-            results = find_patients_by_name(patients, name)
+            print(
+                f"ID: {patient['id']} | Nome: {patient['name']} | "
+                f"Idade: {patient['age']} | Telefone: {patient['phone']} | "
+                f"Cidade: {patient.get('city', '')} | Estado: {patient.get('state', '')}"
+            )
 
-            if results:
-                for patient in results:
-                    print(patient)
-            else:
-                print("Nenhum paciente encontrado.")
+        elif search_type == "nome":
+            name = input("Nome: ")
+            found = find_patients_by_name(patients, name)
+
+            if not found:
+                print("Nenhum paciente encontrado com esse nome.")
+                return
+
+            for patient in found:
+                print(
+                    f"ID: {patient['id']} | Nome: {patient['name']} | "
+                    f"Idade: {patient['age']} | Telefone: {patient['phone']} | "
+                    f"Cidade: {patient.get('city', '')} | Estado: {patient.get('state', '')}"
+                )
+
         else:
-            print("Opção inválida.")
-    except ValueError:
-        print("Entrada inválida.")
+            print("Opção de busca inválida.")
+    except ValueError as error:
+        print(f"Erro: {error}")
+
+
+def handle_create_patient(patients):
+    try:
+        name = input("Nome: ")
+        age = int(input("Idade: "))
+        phone = input("Telefone: ")
+        notes = input("Observações: ")
+        cep = input("CEP: ")
+
+        address = {
+            "cep": cep,
+            "street": "",
+            "neighborhood": "",
+            "city": "",
+            "state": "",
+        }
+
+        if cep.strip():
+            try:
+                address = get_address_by_cep(cep)
+                print("Endereço encontrado:")
+                print(
+                    f"{address['street']} - {address['neighborhood']} | "
+                    f"{address['city']} - {address['state']}"
+                )
+            except (ValueError, AddressAPIError) as error:
+                print(f"Aviso: não foi possível buscar o endereço. {error}")
+
+        patient = create_patient(
+            patients,
+            name,
+            age,
+            phone,
+            notes,
+            address["cep"],
+            address["street"],
+            address["neighborhood"],
+            address["city"],
+            address["state"],
+        )
+
+        print(f"Paciente cadastrado com sucesso. ID: {patient['id']}")
+    except ValueError as error:
+        print(f"Erro: {error}")
 
 
 def handle_create_appointment(appointments, patients):
