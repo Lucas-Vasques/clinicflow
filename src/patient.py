@@ -1,7 +1,18 @@
 from utils import generate_id
 
 
-def create_patient(patients, name, age, phone, notes=""):
+def create_patient(
+    patients,
+    name,
+    age,
+    phone,
+    notes="",
+    cep="",
+    street="",
+    neighborhood="",
+    city="",
+    state="",
+):
     if not name.strip():
         raise ValueError("O nome do paciente não pode ser vazio.")
 
@@ -17,6 +28,11 @@ def create_patient(patients, name, age, phone, notes=""):
         "age": age,
         "phone": phone.strip(),
         "notes": notes.strip(),
+        "cep": cep.strip(),
+        "street": street.strip(),
+        "neighborhood": neighborhood.strip(),
+        "city": city.strip(),
+        "state": state.strip(),
     }
 
     patients.append(patient)
