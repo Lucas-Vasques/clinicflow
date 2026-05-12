@@ -102,3 +102,103 @@ python -m venv .venv
 
 - 3. Ativar o ambiente virtual:
 Windows PowerShell: .venv\Scripts\Activate.ps1
+Windows CMD: .venv\Scripts\activate
+
+- 4. Instalar dependências: pip install -r requirements.txt
+
+## Como executar o projeto
+python src/main.py
+
+## Como rodar os testes
+pytest
+
+## Como rodar o lint
+ruff check .
+
+## Exemplo de uso
+Ao executar o programa, o usuário verá um menu com as opções principais do sistema:
+=== ClinicFlow ===
+- 1. Cadastrar paciente
+- 2. Listar pacientes
+- 3. Buscar paciente
+- 4. Agendar consulta
+- 5. Listar agendamentos
+- 6. Atualizar status do agendamento
+- 7. Cancelar agendamento
+- 8. Sair
+
+Durante o cadastro de paciente, o sistema permite informar um CEP. Se o CEP for válido, o ClinicFlow consulta a API ViaCEP e exibe o endereço encontrado.
+
+Exemplo:
+Nome: Lucas
+Idade: 20
+Telefone: 99999-9999
+Observações: paciente novo
+CEP: 01001-000
+
+Endereço encontrado:
+Praça da Sé - Sé | São Paulo - SP
+
+Paciente cadastrado com sucesso.
+
+## Testest automatizados
+
+O projeto possui testes automatizados para validar comportamentos importantes, como:
+
+- cadastro de paciente com sucesso
+- bloqueio de idade negativa
+- criação de agendamento válido
+- erro ao agendar consulta para paciente inexistente
+- atualização de status de agendamento
+- cancelamento de agendamento
+- limpeza e validação de CEP
+- consulta de endereço por CEP com resposta simulada da API
+- tratamento de CEP inválido ou não encontrado
+
+## Teste de integração
+
+Foi criado um teste automatizado para validar o fluxo de integração com a API ViaCEP.
+
+O teste utiliza uma resposta simulada da API para garantir que o sistema consiga processar corretamente os dados de endereço sem depender da disponibilidade da internet durante a execução dos testes.
+
+## Integração contínua
+
+O projeto utiliza GitHub Actions para rodar automaticamente:
+
+- instalação das dependências
+- lint com Ruff
+- testes com Pytest
+
+Isso garante que alterações enviadas ao repositório sejam verificadas automaticamente.
+
+## Fluxo de desenvolvimento de entrega intermediária
+
+Nesta etapa, o desenvolvimento foi realizado seguindo um fluxo profissional com GitHub:
+
+- criação de uma Issue descrevendo a nova funcionalidade
+- criação da branch entrega-intermediaria
+- implementação da integração com a API ViaCEP
+- criação de testes automatizados
+- abertura de Pull Request
+- validação pelo GitHub Actions
+- merge da branch após aprovação dos checks
+
+## Deploy/Publicação
+
+Como o ClinicFlow é uma aplicação em linha de comando, a execução principal é feita localmente pelo terminal.
+
+Para executar a aplicação, siga os passos de instalação e utilize o comando: python src/main.py
+
+## Versionamento
+
+Versão atual do projeto:
+
+1.1.0
+
+## Autor 
+
+Lucas Vasques
+
+## Repositório
+
+Repositório do ClinicFlow
