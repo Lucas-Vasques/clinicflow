@@ -202,5 +202,4 @@ Lucas Vasques
 
 ## Repositório
 
-Repositório do ClinicFlow[
-](https://github.com/Lucas-Vasques/clinicflow)
+Repositório do ClinicFlow[(https://github.com/Lucas-Vasques/clinicflow)]
