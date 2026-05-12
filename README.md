@@ -89,7 +89,8 @@ clinicflow/
 ├── pyproject.toml
 ├── README.md
 ├── requirements.txt
-└── VERSION´´´
+└── VERSION
+```
 
 ## Instalação
 
