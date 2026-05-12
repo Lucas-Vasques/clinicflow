@@ -142,7 +142,7 @@ Praça da Sé - Sé | São Paulo - SP
 
 Paciente cadastrado com sucesso.
 
-## Testest automatizados
+## Testes automatizados
 
 O projeto possui testes automatizados para validar comportamentos importantes, como:
 
@@ -202,4 +202,5 @@ Lucas Vasques
 
 ## Repositório
 
-Repositório do ClinicFlow
+Repositório do ClinicFlow[
+](https://github.com/Lucas-Vasques/clinicflow)
